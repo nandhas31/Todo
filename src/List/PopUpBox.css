@@ -1,0 +1,9 @@
+.inside {
+    position: fixed;
+    z-index: 1;
+    width: 20%;
+    height: 20%;
+    background-color: white;
+    border: solid;
+    border-color:black
+  }

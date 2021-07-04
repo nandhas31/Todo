@@ -19,7 +19,7 @@ class WelcomeMessage extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="title">
                 <h1>{this.state.greeting}{this.state.name}</h1>
             </div>
         );

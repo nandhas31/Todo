@@ -24,8 +24,11 @@
 }
 
 .sidebar{
-  min-height: 94vh;
+  min-height: 95vh;
   width: 200px;
   background-color: bisque;
-
+  min-width: 20vh;
+}
+.content-container{
+  min-width:80vh;
 }

@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import WelcomeMessage from './Welcome/welcomeMessage';
-import List from './List/List'
+import Item from './List/Item'
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
         </div>
         <div className="content-container">
           <WelcomeMessage />
-          <List/>
+          <Item />
         </div>
       </div>
 
