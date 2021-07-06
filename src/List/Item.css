@@ -3,3 +3,12 @@
     border-color: black; 
     margin: 15px;
 } 
+.green{
+    background-color: yellowgreen;
+}
+.yellow{
+    background-color: yellow;
+}
+.red{
+    background-color: red;
+}

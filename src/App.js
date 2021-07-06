@@ -1,6 +1,6 @@
 import './App.css';
 import WelcomeMessage from './Welcome/welcomeMessage';
-import Item from './List/Item'
+import List from './List/List'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </div>
         <div className="content-container">
           <WelcomeMessage />
-          <Item />
+          <List />
         </div>
       </div>
 

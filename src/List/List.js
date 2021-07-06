@@ -1,37 +1,41 @@
 import React from 'react';
 import Item from './Item.js';
-import './Item.css'
+import './List.css'
+import PopUpBox from './PopUpBox'
 //test item array
 
-let item1 = { id: "Example", text: "Example", completed: false, dateCreated: new Date(), dateDue: new Date() }
-let item2 = { id: "Example", text: "Example", completed: false, dateCreated: new Date(), dateDue: new Date() }
+let item1 = { id: "Example", text: "Example", completed: false, dateCreated: new Date(), dateDue: new Date("7/8/21") }
+let item2 = { id: "Example1", text: "Example2", completed: false, dateCreated: new Date(), dateDue: new Date("7/5/21") }
 let itemarr = []
 itemarr.push(item1)
 itemarr.push(item2)
 
-//
-
-let i = itemarr.map((value) => {
-    return <Item id={value.id} text={value.text} completed={value.completed} dateCreated={value.dateCreated} dateDue={value.dateDue} />
-})
-
 class List extends React.Component {
     constructor(props) {
         super(props);
-        this.state = ({ items: i })
+        this.state = {items: itemarr, popUpBox: false, refreshColor: true };
 
         // Binding this keyword
-        this.removeElement = this.removeElement.bind(this)
-
+        this.remove = this.remove.bind(this)
+        this.addPopUpBox = this.addPopUpBox.bind(this);
+        this.child = React.createRef();
     }
-    removeElement() {
-        if (this.state.items.length > 1) {
-            this.setState({ items: this.state.items.pop() })
+    addPopUpBox() {
+        this.setState({ popUpBox: true });
+    }
+    removePopUpBox(e) {
+        if (this.state.popUpBox && e.target.className !== 'inside') {
+            this.setState({ popUpBox: false });
         }
-        else {
-            this.setState({ items: [] })
+    }
+    remove(index) {
+        console.log(index)
+        if (!this.state.popUpBox) {
+            let arr = this.state.items
+            arr.splice(index, 1)
+            this.setState({ items: arr, refreshColor:!this.state.refreshColor })
         }
-        console.log(this.state.items.length)
+
     }
     refreshList() {
 
@@ -39,15 +43,18 @@ class List extends React.Component {
     }
     render() {
         return (
-            <div className="tasks-wrap">
-                {this.state.taskList.map((task, index)=>{
-                    return (<div className="task-box" key={index} onClick={this.removeElement}>
-                    {this.state.items}
-                </div>)
-                })}
-            </div>
+            <div onClick={(e) => { this.removePopUpBox(e) }}>
+                <div> {this.state.popUpBox ? <PopUpBox /> : null} </div>
+                <div className="add" onClick={this.addPopUpBox}>+</div>
+                <div className="tasks-wrap">
+                    {this.state.items.map((task, index) => {
+                        return (
+                            <Item index={index} refreshColor={this.state.refreshColor} ref={this.child} key={index} item={task} remove={this.remove}/>
+                    )})}
+                </div>
 
-        );
+
+            </div>);
     }
     componentDidMount() {
         this.refreshList()
