@@ -2,13 +2,10 @@ import React from 'react';
 import Item from './Item.js';
 import './List.css'
 import PopUpBox from './PopUpBox'
+import Task from './Task'
 //test item array
 
-let item1 = { id: "Example", text: "Example", completed: false, dateCreated: new Date(), dateDue: new Date("7/8/21") }
-let item2 = { id: "Example1", text: "Example2", completed: false, dateCreated: new Date(), dateDue: new Date("7/5/21") }
 let itemarr = []
-itemarr.push(item1)
-itemarr.push(item2)
 
 class List extends React.Component {
     constructor(props) {
@@ -19,17 +16,21 @@ class List extends React.Component {
         this.remove = this.remove.bind(this)
         this.addPopUpBox = this.addPopUpBox.bind(this);
         this.child = React.createRef();
+        this.add = this.add.bind(this);
     }
     addPopUpBox() {
         this.setState({ popUpBox: true });
     }
     removePopUpBox(e) {
-        if (this.state.popUpBox && e.target.className !== 'inside') {
+        if (this.state.popUpBox && !e.target.closest('.inside')) {
             this.setState({ popUpBox: false });
         }
     }
+    add(text, date, time){
+        itemarr.push(new Task(text, new Date(date + " "+ time)))
+        this.setState({popUpBox:false})
+    }
     remove(index) {
-        console.log(index)
         if (!this.state.popUpBox) {
             let arr = this.state.items
             arr.splice(index, 1)
@@ -44,12 +45,12 @@ class List extends React.Component {
     render() {
         return (
             <div onClick={(e) => { this.removePopUpBox(e) }}>
-                <div> {this.state.popUpBox ? <PopUpBox /> : null} </div>
+                <div> {this.state.popUpBox ? <PopUpBox addFunction={this.add}/> : null} </div>
                 <div className="add" onClick={this.addPopUpBox}>+</div>
                 <div className="tasks-wrap">
                     {this.state.items.map((task, index) => {
                         return (
-                            <Item index={index} refreshColor={this.state.refreshColor} ref={this.child} key={index} item={task} remove={this.remove}/>
+                            <Item index={index} refreshColor={this.state.refreshColor} ref={this.child} key={task.id} item={task} remove={this.remove}/>
                     )})}
                 </div>
 
@@ -60,7 +61,7 @@ class List extends React.Component {
         this.refreshList()
         this.message = setInterval(() => {
             this.refreshList()
-        }, 1000)
+        }, 10000)
     }
     componentWillUnmount() {
         clearInterval(this.message)
@@ -69,3 +70,5 @@ class List extends React.Component {
 }
 
 export default List;
+
+

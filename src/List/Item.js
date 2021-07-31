@@ -4,7 +4,6 @@ class Item extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.index)
         this.state = {dateDue:this.props.item.dateDue, urgency_class:this.refreshColor()};
         this.refreshColor = this.refreshColor.bind(this)
 
