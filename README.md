@@ -2,7 +2,15 @@
 
 This project was created to revisit my Javascript skills as well as gain an introduction into the React and Electron frameworks as well as the MERN stack.
 
-## Available Scripts
+## Features
+
+1. Web view of app
+2. Native PC/Mac app with Electron
+3. Backend built with ExpressJS featuring custom routing to aid storing and authenticating user
+4. Token-Based Authentication using JWT (Coming Soon :) )
+5. Storage using MongoDB with Mongoose framework (Development MongoDB instance run on local Docker image) 
+
+## Installation (Development)
 
 In the project directory, you can run:
 
