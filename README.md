@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# todo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created to revisit my Javascript skills as well as gain an introduction into the React and Electron frameworks as well as the MERN stack.
 
 ## Available Scripts
 
