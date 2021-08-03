@@ -1,5 +1,6 @@
 # todo
 
+This project was created to revisit my Javascript skills as well as gain an introduction into the React and Electron frameworks as well as the MERN stack.
 
 - [todo](#todo)
   * [Features](#features)
@@ -13,8 +14,6 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-
-This project was created to revisit my Javascript skills as well as gain an introduction into the React and Electron frameworks as well as the MERN stack.
 
 ## Features
 
