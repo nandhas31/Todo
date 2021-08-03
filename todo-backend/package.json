@@ -1,0 +1,17 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "backend for todo project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon index.js"
+  },
+  "author": "Nandha Sundaravadivel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5"
+  }
+}
