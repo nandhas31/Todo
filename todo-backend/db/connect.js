@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
-const task_schema = require('./model')
-mongoose.connect('mongodb://localhost:27017', {useNewUrlParser: true, useUnifiedTopology: true}).then(
+const user = require('./User')
+const task = require('./Task')
+
+
+
+mongoose.connect('mongodb://mongoadmin:secret@localhost:27888/test?authSource=admin', {useNewUrlParser: true, useUnifiedTopology: true}).then(
     console.log("Hello")
 );
 
-const Task = mongoose.model('Task', task_schema);
-
-exports.Task= Task;
+exports.Task = task.Task;
+exports.user = user.User;
